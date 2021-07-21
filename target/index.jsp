@@ -10,7 +10,7 @@
 </head>
 <body>
 <script>
-    window.onload = tests();    // test function is called; within tests, two other functions
+    window.onload = tests();
     function tests() {
         test_report_submission();
         test_query_report();
@@ -20,37 +20,37 @@
         $.ajax({
             url: 'HttpServlet',
             type: 'POST',
-            data: { "tab_id": "0", "fN": "Jason", "lN": "Zhou",  "is_male": "t",
-                "age": "30", "blood_type": "AB", "tel": "928-777-8856", "email":
-                    "jasonzhou@gmail.com", "contact_fN": "Bill", "contact_lN": "Huang",
-                "contact_tel": "608-888-9876", "contact_email": "billh@gmail.com",
-                "report_type": "request", "disaster_type": "wildfire", "longitude":
-                    "-87", "latitude": "33", "message": "request rescue!!!",
-                "additional_message": "rescue/volunteer"},      // data in key-value pairs
+            data: { "tab_id": "0", "fN": "Dannis", "lN": "Black",  "is_male": "t",
+                "age": "30", "blood_type": "AB", "tel": "608-888-9876", "email":
+                    "db@gmail.com", "contact_fN": null, "contact_lN": null,
+                "contact_tel": null, "contact_email": null,
+                "report_type": "damage", "disaster_type": "hurricane", "longitude":
+                    "26.89", "latitude": "35.12", "message": null,
+                "additional_message": "pollution"},  // don't know what to do with nulls
             success: function(data){
                 $.each(data, function(i, name) {
                     alert("key: " + i + ", value: " + name);
                 });
             },
             error: function(xhr, status, error) {
-                alert("An AJAX error occurred: " + status + "\nError: " + error);
+                alert("An AJAX error occured: " + status + "\nError: " + error);
             }
         });
     }
 
-    function test_query_report() {   // for querying reports in database. response in json format
+    function test_query_report() {
         $.ajax({
             url: 'HttpServlet',
             type: 'POST',
             data: { "tab_id": "1", "disaster_type": "hurricane", "report_type":
-                    "donation",  "resource_or_damage": "food"},
+                    "damage", "resource_or_damage": null }, // dont know what to do with third parameter
             success: function(data){
                 $.each(data, function(i, e) {
                     alert(JSON.stringify(e));
                 });
             },
             error: function(xhr, status, error) {
-                alert("An AJAX error occurred: " + status + "\nError: " + error);
+                alert("An AJAX error occured: " + status + "\nError: " + error);
             }
         });
     }
