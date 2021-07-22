@@ -20,7 +20,7 @@
         $.ajax({
             url: 'RunQuery.jsp',   //'HttpServlet'
             type: 'POST',
-            data: { "tab_id": "0", "fN": "Dannis", "lN": "Black",  "is_male": "t",
+            data: { "tab_id": "0", "fN": "Denise", "lN": "Black",  "is_male": "f",
                 "age": "30", "blood_type": "AB", "tel": "608-888-9876", "email":
                     "db@gmail.com", "contact_fN": null, "contact_lN": null,
                 "contact_tel": null, "contact_email": null,
@@ -29,7 +29,7 @@
                 "additional_message": "pollution"},
             success: function(data){
                 $.each(data, function(i, name) {
-                    alert("key2: " + i + ", value: " + name);
+                    alert("key: " + i + ", value: " + name);
                 });
             },
             error: function(xhr, status, error) {
