@@ -18,7 +18,7 @@
 
     function test_report_submission() {
         $.ajax({
-            url: 'HttpServlet',
+            url: 'RunQuery.jsp',   //'HttpServlet'
             type: 'POST',
             data: { "tab_id": "0", "fN": "Dannis", "lN": "Black",  "is_male": "t",
                 "age": "30", "blood_type": "AB", "tel": "608-888-9876", "email":
@@ -26,10 +26,10 @@
                 "contact_tel": null, "contact_email": null,
                 "report_type": "damage", "disaster_type": "hurricane", "longitude":
                     "26.89", "latitude": "35.12", "message": null,
-                "additional_message": "pollution"},  // don't know what to do with nulls
+                "additional_message": "pollution"},
             success: function(data){
                 $.each(data, function(i, name) {
-                    alert("key: " + i + ", value: " + name);
+                    alert("key2: " + i + ", value: " + name);
                 });
             },
             error: function(xhr, status, error) {
@@ -43,7 +43,7 @@
             url: 'HttpServlet',
             type: 'POST',
             data: { "tab_id": "1", "disaster_type": "hurricane", "report_type":
-                    "damage", "resource_or_damage": null }, // dont know what to do with third parameter
+                    "damage"}, // delete parameter resource_or_damage
             success: function(data){
                 $.each(data, function(i, e) {
                     alert(JSON.stringify(e));
